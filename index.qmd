@@ -1,0 +1,47 @@
+---
+title: "Quarto testing - First slides"
+subtitle: "Dataviz of gapminder"
+author: "Brad McKenzie"
+format: revealjs
+editor: visual
+---
+
+## Loading data
+
+We load the dataset 'gapminder' included in the R package `{gapminder}`
+
+```{r}
+library(gapminder)
+gapminder <- gapminder
+gapminder
+```
+
+## Now we finish this slide
+
+## Preprocess data
+
+Checking the data load
+
+```{r select data, echo=TRUE}
+library(dplyr)
+gapminder_2007 <- gapminder |> 
+  filter(year == 2007)
+
+```
+
+------------------------------------------------------------------------
+
+## Plot the data
+
+```{r}
+#| echo: true
+#| code-fold: true
+library(ggplot2)
+ggplot(gapminder_2007) +
+  geom_point(aes(x=lifeExp, y= gdpPercap,
+                 color = continent)) +
+  ggthemes::scale_color_colorblind() +
+  theme_minimal()
+```
+
+Use code fold and echo combined to have the code drop down option.
